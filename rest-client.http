@@ -1,0 +1,133 @@
+### get request
+GET http://localhost:3000
+
+### get all songs
+GET http://localhost:3000/songs
+
+### get 10 songs on second page
+GET http://localhost:3000/songs/?page=2&limit=10
+
+### get song by id
+GET http://localhost:3000/songs/1
+
+### create a new song
+POST http://localhost:3000/songs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF3MTIzQGdtYWlsLmNvbSIsInVzZXJJZCI6MywiYXJ0aXN0SWQiOjIsImlhdCI6MTcxOTM3MzcxOCwiZXhwIjoxNzE5NDYwMTE4fQ.VothI85PI7EHXcjgYbTiuURs88aqaFItKDK0oqhqQgw
+
+{
+    "title": "A new song by Alan Walker and Martin Garrix",
+    "artists": [1,2],
+    "releasedDate": "2024-01-06",
+    "duration": "02:53",
+    "lyrics": "The club isn't the best place to find a lover..."
+}
+
+### update a song
+PUT http://localhost:3000/songs/2
+Content-Type: application/json
+
+{
+    "title": "Shape of You",
+    "releasedDate": "2019-01-06",
+    "duration": "03:53",
+    "lyrics": "The club isn't the best place to find a lover..."
+}
+
+### delete a song
+DELETE http://localhost:3000/songs/1
+
+### Create new playlist
+
+POST http://localhost:3000/playlists
+Content-Type: application/json
+
+{
+    "name": "Feel Good Now",
+    "songs": [
+        3
+    ],
+    "user": 1
+}
+
+
+### Signup user
+
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john@gmail.com",
+    "password": "123123123"
+}
+
+### API key john123: f7ba9b12-6a63-468e-9a86-047d704a0dbf
+
+
+### Signup artist
+
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+    "firstName": "Alan",
+    "lastName": "Walker",
+    "email": "aw123@gmail.com",
+    "password": "123123123"
+}
+
+### Login artist
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "aw123@gmail.com",
+    "password": "123123123"
+}
+
+
+### Login user
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "john12@gmail.com",
+    "password": "123123123"
+}
+
+### Access Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4xMkBnbWFpbC5jb20iLCJzdWIiOjEsImlhdCI6MTcxOTM2OTE5NiwiZXhwIjoxNzE5NDU1NTk2fQ.-8NJvLWGKk1XL99ZWZZxJ8yrD_t6ldlRqfDFMMmxWkM
+
+### Artist Access Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcnRpbmdhcnJpeEBnbWFpbC5jb20iLCJ1c2VySWQiOjIsImFydGlzdElkIjoxLCJpYXQiOjE3MTkzNzMyODAsImV4cCI6MTcxOTQ1OTY4MH0.UZbm0j7tkbbHi7z5P92w8gY6B2EQpV8Gy-Ne7KYnWpQ
+
+### Profile
+
+GET http://localhost:3000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF3MTIzQGdtYWlsLmNvbSIsInVzZXJJZCI6NDM1LCJpYXQiOjE3MTk1NDc4NTQsImV4cCI6MTcxOTYzNDI1NH0.AO1_BeiDgaTudcz_1eAr9lqLwm91cLQxByqowmzIrJw
+
+
+### Enable 2FA
+GET http://localhost:3000/auth/enable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF3MTIzQGdtYWlsLmNvbSIsInVzZXJJZCI6NDM1LCJpYXQiOjE3MTk1NDc4NTQsImV4cCI6MTcxOTYzNDI1NH0.AO1_BeiDgaTudcz_1eAr9lqLwm91cLQxByqowmzIrJw
+
+
+### Validate 2FA
+POST http://localhost:3000/auth/validate-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4xMkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTcxOTM3Nzc0OCwiZXhwIjoxNzE5NDY0MTQ4fQ.fa94E4G-VMzc0EhVBT_LSOMC8KqJSDnlWxf-hFiYlWY
+Content-Type: application/json
+
+{
+    "token": "029479"
+}
+
+
+### Disable 2FA
+GET http://localhost:3000/auth/disable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4xMkBnbWFpbC5jb20iLCJ1c2VySWQiOjEsImlhdCI6MTcxOTM3NzMzMiwiZXhwIjoxNzE5NDYzNzMyfQ.2vab2A3l2KDKBi0otNA8bqBVoazqFjQihKxSHLtm570
+
+### Access profile 
+
+GET http://localhost:3000/auth/profile
+Authorization: Bearer f7ba9b12-6a63-468e-9a86-047d704a0dbf
