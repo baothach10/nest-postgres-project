@@ -22,12 +22,10 @@ import configuration from './config/configuration';
 import { validate } from 'env.validation';
 import { DataSource } from 'typeorm';
 
-// console.log(process.env.NODE_ENV);
-
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env.development', '.env.production'],
+      envFilePath: [`${process.cwd()}/.env.${process.env.NODE_ENV}`],
       isGlobal: true,
       load: [configuration],
       validate: validate,
@@ -56,17 +54,20 @@ import { DataSource } from 'typeorm';
     // },
   ],
 })
-export class AppModule implements NestModule {
-  constructor(private dataSource: DataSource) {
-    console.log('dbname: ', dataSource.driver.database);
-  }
-  configure(consumer: MiddlewareConsumer) {
-    // consumer.apply(LoggerMiddleware).forRoutes('songs'); // option 1
+// export class AppModule implements NestModule {
+//   constructor(private dataSource: DataSource) {
+//     console.log('dbname: ', dataSource.driver.database);
+//   }
+//   configure(consumer: MiddlewareConsumer) {
+//     // consumer.apply(LoggerMiddleware).forRoutes('songs'); // option 1
 
-    // consumer
-    //   .apply(LoggerMiddleware)
-    //   .forRoutes({ path: 'songs', method: RequestMethod.POST }); // option 2
+//     // consumer
+//     //   .apply(LoggerMiddleware)
+//     //   .forRoutes({ path: 'songs', method: RequestMethod.POST }); // option 2
 
-    consumer.apply(LoggerMiddleware).forRoutes(SongsController); // option 3
-  }
+//     consumer.apply(LoggerMiddleware).forRoutes(SongsController); // option 3
+//   }
+// }
+export class AppModule {
+  constructor() {}
 }
